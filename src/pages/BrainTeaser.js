@@ -1,5 +1,3 @@
-// src/App.js or src/routes/App.js
-
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,30 +5,36 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import { AuthProvider } from "./context/AuthContext";
-import PrivateRoute from "./routes/PrivateRoute";
+import { useEffect } from "react";
+import { AuthProvider } from "../context/AuthContext";
 
-// Pages
-import Login from "./pages/Login";
-import AuthLanding from "./pages/AuthLanding";
-import Dashboard from "./pages/Dashboard";
-import MapView from "./pages/MapView";
-import EarthView from "./pages/EarthView";
-import MazePuzzle from "./pages/MazePuzzle";
-import BrainTeaser from "./pages/BrainTeaser";
-import CaptureKingdom from "./pages/CaptureKingdom";
+import Login from "./Login";
+import AuthLanding from "./AuthLanding";
+import MapView from "./MapView";
+import EarthView from "./EarthView";
+import PrivateRoute from "../routes/PrivateRoute";
+import Dashboard from "./Dashboard";
+import MazePuzzle from "./MazePuzzle";
+import BrainTeaser from "./BrainTeaser";
+import CaptureKingdom from "./CaptureKingdom";
 
-export default function App() {
+function App() {
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
   return (
     <AuthProvider>
       <Router>
         <Routes>
-          {/* Public Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          <Route path="/auth" element={<AuthLanding />} />
 
-          {/* Private Routes */}
           <Route
             path="/dashboard"
             element={
@@ -39,6 +43,7 @@ export default function App() {
               </PrivateRoute>
             }
           />
+
           <Route
             path="/map"
             element={
@@ -47,6 +52,7 @@ export default function App() {
               </PrivateRoute>
             }
           />
+
           <Route
             path="/earth"
             element={
@@ -55,6 +61,7 @@ export default function App() {
               </PrivateRoute>
             }
           />
+
           <Route
             path="/maze"
             element={
@@ -63,6 +70,7 @@ export default function App() {
               </PrivateRoute>
             }
           />
+
           <Route
             path="/teaser"
             element={
@@ -71,6 +79,7 @@ export default function App() {
               </PrivateRoute>
             }
           />
+
           <Route
             path="/capture"
             element={
@@ -84,3 +93,5 @@ export default function App() {
     </AuthProvider>
   );
 }
+
+export default App;

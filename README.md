@@ -1,70 +1,215 @@
-# Getting Started with Create React App
+# 👑 Capture Kingdom
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to **Capture Kingdom** — a strategy-packed, puzzle-driven game of exploration, conquest, and alliances!
 
-## Available Scripts
+Explore real-world locations, solve puzzles, form alliances, and claim kingdoms under your flag. Level up, trade territories, defend your empire, and build your global legacy in an ever-changing multiplayer world.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🌍 What is Capture Kingdom?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Capture Kingdom** is a location-aware, multiplayer web game that blends:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Strategy
+- Puzzles
+- Real-world movement
+- Accessibility features
+- Interactive 3D visuals
 
-### `npm test`
+**Gameplay:** Travel to real coordinates, solve mazes and brain teasers, and conquer virtual kingdoms tied to physical locations.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🚀 Getting Started Walkthrough
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Users visit the site and meet a **gold-crowned stickman avatar** with a flowing blue cape.
+2. The avatar uses **text-to-speech** and readable text to guide players.
+3. Users are directed to **sign up or log in**.
+4. Upon login:
+   - Location permissions are requested.
+   - A **unique user ID** is generated.
+   - Users create a password.
+5. The avatar walks through:
+   - Dashboard interface
+   - Feature overview
+   - How to begin exploring
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📊 Core Gameplay Flow
 
-### `npm run eject`
+1. View **Nearby Kingdoms** list
+2. Select a kingdom ➔ Solve **Maze Puzzle**
+3. Get **Google Maps route** to location
+4. On arrival, solve a **1-minute Brain Teaser** (with TTS support)
+5. On success ➔ **Capture kingdom**, earn **Souls**, level up
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## ✨ Key Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 📍 Nearby Kingdoms
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Shows 5 nearby kingdoms
+- 2 are **Ghost Kingdoms**:
+  - Message: "Boo! You have been ghosted."
+  - Cannot be captured
+- List updates as user explores
 
-## Learn More
+### 🧠 Puzzle & Capture
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Maze Puzzle** unlocks location
+- At location, answer **Brain Teaser**
+  - With **Text-to-Speech support**
+  - **1 Refresh** allowed per teaser
+- Initially, all kingdoms named `XXXXXXXXXX`
+- **Renaming Rules:**
+  - Only once per user globally
+  - Recaptures allow renaming if user hasn’t renamed before
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 🏠 Party-Based Capture
 
-### Code Splitting
+- Form **parties** for tough kingdoms
+- Every member must:
+  - Solve their maze
+  - Reach the location
+  - Solve their teaser
+- If successful:
+  - Capture under **party name**
+  - Rewards are split equally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 🔽 Capture Loss
 
-### Analyzing the Bundle Size
+- If another player captures your kingdom:
+  - It vanishes from your list
+  - Your flag is removed
+  - Capture count decreases
+  - New captor may rename it
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 📈 Leveling System
 
-### Making a Progressive Web App
+- To level up, capture **n** kingdoms (where n = current level)
+- After leveling:
+  - Captured count resets
+  - Level increases
+  - Unlocks:
+    - New powers
+    - Higher soul cap
+    - Advanced battles
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 🚙 Soul Economy
 
-### Advanced Configuration
+**Earn Souls by:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Capturing kingdoms
+- Daily tribute from held kingdoms
 
-### Deployment
+**Spend Souls on:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Unlocking new areas
+- Activating powers
+- Flag customization
 
-### `npm run build` fails to minify
+**Soul Cap** increases every 3 levels
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 🔮 Powers (Last 7 Days)
+
+| Power                 | Description                     |
+| --------------------- | ------------------------------- |
+| 🕵 Hide Kingdom       | Make your kingdom invisible     |
+| 📈 Boost Level        | Temporarily raise kingdom level |
+| 🩤 Trap                | Drain Souls from invaders       |
+| ⌛ Reduce Teaser Time | Increase teaser difficulty      |
+| ➕ Add Teaser Options | Add extra wrong answers         |
+| ❌ Disable Refresh    | Block teaser reshuffle          |
+| 💥 Maze Misdirect     | Lead invaders to Ghosts         |
+
+---
+
+## 🎨 Flag Customization
+
+- Choose **shape, background, colors, emblem**
+- Appears on:
+  - **User Profile**
+  - **Captured Kingdoms** (on 2D/3D maps)
+- Successful capture triggers:
+  - Blast sound
+  - Flag wave + explosion animation
+  - Real-time 3D globe update
+
+---
+
+---
+
+## 🏆 Leaderboards
+
+- 🌐 Global: Top 10 players
+- 📍 Local: Top 10 in your region
+
+---
+
+## 📊 Activity Tracker
+
+- 6-month heatmap
+- Tracks:
+  - Login frequency
+  - Captures
+  - Inactivity
+- Displays:
+  - Longest streak 👑
+  - Daily streak stats
+
+---
+
+## 🏠 Global Bidding Arena
+
+- List your kingdoms for **auction**
+- 24h auction window
+- Highest bidder wins
+- Transfers:
+  - XP
+  - Name (unless renamed)
+  - Flag & visual info
+
+---
+
+## 🌑 Theme Appearance: Dark/Light Mode
+
+Toggle located at top-right of dashboard
+
+### 🌙 Dark Mode:
+
+- Deep navy backgrounds
+- Glowing flag markers
+- White text
+- Cool neon button styles
+
+### ☀ Light Mode:
+
+- Warm light tones
+- Standard daylight globe
+- Dark text
+- Bright button palettes
+
+**Persistence:**
+
+- Stored in `localStorage`
+- Avatar adjusts glow/shine by mode
+
+---
+
+## 🚧 Development & Accessibility
+
+- Built during hackathon
+- Actively evolving
+- Features:
+  - Guided onboarding via avatar
+  - Text-to-Speech for teasers
+  - Dark/Light mode
+- Welcoming contributors and feedback
+
+---
+
+## 🚀 Build your legacy. Capture the world. One kingdom at a time. 🌍👑
