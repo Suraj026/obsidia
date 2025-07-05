@@ -213,3 +213,119 @@ Toggle located at top-right of dashboard
 ---
 
 ## 🚀 Build your legacy. Capture the world. One kingdom at a time. 🌍👑
+Sure! Here's an updated and polished version of your README with the following sections included:
+
+* **Features Implemented (with difficulty levels)**
+* **APIs Used**
+* **Screenshots**
+* **Setup and Testing Instructions**
+
+---
+
+
+## ✨ Features Implemented (with Difficulty Levels)
+
+| Feature                        | Description                                                | Difficulty |
+| ------------------------------ | ---------------------------------------------------------- | ---------- |
+| 🔐 Authentication System       | Unique username check, email/password login                | Easy       |
+| 🗺️ Location-Based Map         | Displays captured kingdoms on Google Maps                  | Medium     |
+| 👑 Kingdom Capture Mechanism   | Players can capture real-world kingdoms                    | Medium     |
+| 🧠 Puzzle and Maze Integration | Solve to capture kingdoms or earn rewards                  | Hard       |
+| ⚔️ Level-Up System             | Level increases when captured kingdoms match current level | Medium     |
+| 💎 Magical Shop                | Buy mystical items using Soulstones/Obsidian               | Medium     |
+| 📜 Stickman Tutorial Guide     | Interactive guide to onboard new users                     | Medium     |
+| 🧙‍♂️ Inventory System         | Track user items and resources                             | Medium     |
+| 🌓 Theme Toggle                | Light/Dark mode toggle with UI changes                     | Easy       |
+| 🧭 Leaderboard                 | Displays top players globally                              | Medium     |
+| 🔄 Real-time Sync              | Firebase real-time updates for map and stats               | Medium     |
+
+---
+
+## 🔌 API(s) Used
+
+| API                | Purpose                            |
+| ------------------ | ---------------------------------- |
+| Firebase Auth      | User authentication and management |
+| Firebase Firestore | Real-time database for game data   |
+| Firebase Hosting   | Web app deployment                 |
+| Google Maps API    | Real-world map to show kingdoms    |
+| UUID / Nano ID     | Unique user ID generation          |
+
+---
+
+## 🖼️ Screenshots
+
+> *Add your own screenshots here, or I can generate placeholders if you describe them.*
+
+**1. Authentication Page**
+`[Screenshot: Username and email form with error messages for duplicates]`
+
+**2. Map Interface**
+`[Screenshot: Google Maps with magical markers for kingdoms]`
+
+**3. Magical Shop UI**
+`[Screenshot: Inventory page with soulstones and magical items]`
+
+**4. Stickman Tutorial**
+`[Screenshot: Animated stickman showing speech bubbles explaining UI]`
+
+**5. Leaderboard**
+`[Screenshot: Top players ranked with level and number of kingdoms]`
+
+---
+
+## 🛠️ Setup and Testing Instructions
+
+### 🧱 Prerequisites
+
+* Node.js (>=18)
+* Firebase CLI
+* Google Maps API key
+
+### 🔧 Setup
+
+```bash
+# Clone the repo
+git clone https://github.com/yourusername/mystic-kingdoms.git
+cd mystic-kingdoms
+
+# Install dependencies
+npm install
+
+# Set up Firebase
+firebase login
+firebase init
+# Link with Firestore and Hosting
+
+# Add your .env file
+touch .env.local
+```
+
+**`.env.local` example:**
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_maps_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+```
+
+### 🚀 Run Locally
+
+```bash
+npm run dev
+```
+
+### 🧪 Testing
+
+Manual testing steps:
+
+* Create a new user account
+* Try duplicate usernames (should fail)
+* Capture a kingdom (check map and DB)
+* Solve a maze/puzzle (UI flow)
+* Visit shop and purchase an item
+* Switch theme (dark/light toggle)
+* Watch leaderboard updates
+
+
