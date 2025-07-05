@@ -255,22 +255,33 @@ Sure! Here's an updated and polished version of your README with the following s
 
 ## 🖼️ Screenshots
 
-> *Add your own screenshots here, or I can generate placeholders if you describe them.*
-
 **1. Authentication Page**
-`[Screenshot: Username and email form with error messages for duplicates]`
+`
+
+![Screenshot 2025-07-06 035807](https://github.com/user-attachments/assets/ecc45181-4e75-4ccf-bb51-5a9b00558db9)
 
 **2. Map Interface**
-`[Screenshot: Google Maps with magical markers for kingdoms]`
+`
+![Screenshot 2025-07-06 042837](https://github.com/user-attachments/assets/e73bbe9f-c614-4572-abbc-a9948cd87d7a)
+
+![Screenshot 2025-07-06 042908](https://github.com/user-attachments/assets/2888a478-0d76-4c8a-a066-ba7332c272aa)
+
 
 **3. Magical Shop UI**
-`[Screenshot: Inventory page with soulstones and magical items]`
+`
+![Screenshot 2025-07-06 042853](https://github.com/user-attachments/assets/bb1aee4c-8908-4da6-8137-d3252e599682)
 
 **4. Stickman Tutorial**
-`[Screenshot: Animated stickman showing speech bubbles explaining UI]`
+![Screenshot 2025-07-06 042748](https://github.com/user-attachments/assets/701a8623-067a-405c-8ccd-ad9e43a8815c)
 
-**5. Leaderboard**
-`[Screenshot: Top players ranked with level and number of kingdoms]`
+
+**5. Dark Theme**
+`
+![Screenshot 2025-07-06 042800](https://github.com/user-attachments/assets/188caf82-1e77-4fc5-8e0b-2953187eb878)
+
+**6. Maze**
+
+![Screenshot 2025-07-06 042921](https://github.com/user-attachments/assets/1e3f4221-e2fd-4104-ba5a-92b141ef719a)
 
 ---
 
