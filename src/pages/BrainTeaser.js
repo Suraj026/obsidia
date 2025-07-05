@@ -1,97 +1,42 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+// src/pages/BrainTeaser.js
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { useEffect } from "react";
-import { AuthProvider } from "../context/AuthContext";
+export default function BrainTeaser() {
+  const [answer, setAnswer] = useState("");
+  const [solved, setSolved] = useState(false);
+  const navigate = useNavigate();
 
-import Login from "./Login";
-import AuthLanding from "./AuthLanding";
-import MapView from "./MapView";
-import EarthView from "./EarthView";
-import PrivateRoute from "../routes/PrivateRoute";
-import Dashboard from "./Dashboard";
-import MazePuzzle from "./MazePuzzle";
-import BrainTeaser from "./BrainTeaser";
-import CaptureKingdom from "./CaptureKingdom";
+  const correctAnswer = "42";
 
-function App() {
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
+  const handleSubmit = () => {
+    if (answer.trim() === correctAnswer) {
+      setSolved(true);
+      alert("🎉 Kingdom Captured!");
+      navigate("/dashboard");
     } else {
-      document.documentElement.classList.remove("dark");
+      alert("❌ Incorrect! Try again.");
     }
-  }, []);
+  };
 
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-
-          <Route
-            path="/dashboard"
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
-
-          <Route
-            path="/map"
-            element={
-              <PrivateRoute>
-                <MapView />
-              </PrivateRoute>
-            }
-          />
-
-          <Route
-            path="/earth"
-            element={
-              <PrivateRoute>
-                <EarthView />
-              </PrivateRoute>
-            }
-          />
-
-          <Route
-            path="/maze"
-            element={
-              <PrivateRoute>
-                <MazePuzzle />
-              </PrivateRoute>
-            }
-          />
-
-          <Route
-            path="/teaser"
-            element={
-              <PrivateRoute>
-                <BrainTeaser />
-              </PrivateRoute>
-            }
-          />
-
-          <Route
-            path="/capture"
-            element={
-              <PrivateRoute>
-                <CaptureKingdom />
-              </PrivateRoute>
-            }
-          />
-        </Routes>
-      </Router>
-    </AuthProvider>
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center px-6">
+      <h1 className="text-xl font-bold mb-4">🧠 Final Teaser</h1>
+      <p className="mb-4">
+        What is the answer to life, universe and everything?
+      </p>
+      <input
+        value={answer}
+        onChange={(e) => setAnswer(e.target.value)}
+        className="p-2 text-black rounded mb-4"
+        placeholder="Your Answer"
+      />
+      <button
+        onClick={handleSubmit}
+        className="bg-purple-600 px-4 py-2 rounded"
+      >
+        Submit
+      </button>
+    </div>
   );
 }
-
-export default App;

@@ -1,5 +1,4 @@
-// src/App.js or src/routes/App.js
-
+// src/App.js
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,21 +15,21 @@ import AuthLanding from "./pages/AuthLanding";
 import Dashboard from "./pages/Dashboard";
 import MapView from "./pages/MapView";
 import EarthView from "./pages/EarthView";
-import MazePuzzle from "./pages/MazePuzzle";
-import BrainTeaser from "./pages/BrainTeaser";
-import CaptureKingdom from "./pages/CaptureKingdom";
+import MazePuzzle from "./pages/MazePuzzle"; // ✅ Make sure this file exists
+import BrainTeaser from "./pages/BrainTeaser"; // ✅ Make sure this file exists
+import CaptureKingdom from "./pages/CaptureKingdom"; // ✅ Make sure this file exists
 
 export default function App() {
   return (
     <AuthProvider>
       <Router>
         <Routes>
-          {/* Public Routes */}
+          {/* 🔓 Public Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/auth" element={<AuthLanding />} />
 
-          {/* Private Routes */}
+          {/* 🔒 Private Routes */}
           <Route
             path="/dashboard"
             element={

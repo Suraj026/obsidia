@@ -8,6 +8,7 @@ import NearbyKingdoms from "../components/NearbyKingdoms";
 import BiddingArena from "../components/BiddingArena";
 import Shop from "../components/Shop";
 import ProfilePanel from "../components/Dashboard/ProfilePanel";
+import StoryAvatar from "../components/StoryAvatar";
 
 export default function Dashboard() {
   return (
@@ -43,6 +44,9 @@ export default function Dashboard() {
           <Shop />
         </div>
       </div>
+
+      {/* 🧙‍♂️ Story Mode Avatar */}
+      <StoryAvatar />
     </div>
   );
 }
