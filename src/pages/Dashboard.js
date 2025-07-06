@@ -20,56 +20,55 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300 overflow-hidden">
-      {/* 🌌 Starry Background for Dark Mode */}
+    <div className="relative min-h-screen bg-white dark:bg-black text-black dark:text-neonGreen transition-colors duration-300 overflow-hidden font-[MedievalSharp]">
+      {/* 🌌 Render starry background only in dark mode */}
       {isDark && <StarryBackground />}
 
-      {/* 🌍 Earth Visual Background */}
+      {/* 🌍 3D Earth background */}
       <EarthBackground />
 
-      {/* 🧙‍♂️ Story Avatar Guide */}
+      {/* 🧙 Story guide avatar */}
       <StoryAvatar />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 py-6 space-y-10">
-        {/* 🔝 Header Row */}
+        {/* 🔝 Top row: Profile + Leaderboard + Stats */}
         <div className="flex flex-wrap items-start gap-4 w-full">
-          {/* Profile Header */}
           <div className="w-full md:w-auto flex-none shadow-lg hover:scale-105 transition-transform duration-300">
             <ProfileHeader />
           </div>
 
-          {/* Leaderboard */}
           <div className="flex-grow shadow-lg hover:scale-105 transition-transform duration-300">
             <div className="w-full h-[200px]">
               <Leaderboard />
             </div>
           </div>
 
-          {/* Profile Info */}
           <div className="w-full md:w-auto flex-none shadow-lg hover:scale-105 transition-transform duration-300">
             <ProfilePanel />
           </div>
         </div>
 
-        {/* 🗞️ News Section */}
+        {/* 🗞️ News feed & chat */}
         <div className="w-full shadow-lg hover:scale-105 transition-transform duration-300">
           <NewsChatPanel />
         </div>
 
-        {/* 🏰 Kingdoms, Map, Bidding Arena */}
+        {/* 🏰 Nearby, Map, Bidding */}
         <div className="flex flex-wrap justify-between gap-6">
           <div className="flex-1 min-w-[300px] shadow-lg hover:scale-105 transition-transform duration-300">
             <NearbyKingdoms />
           </div>
+
           <div className="flex-1 min-w-[300px] shadow-lg hover:scale-105 transition-transform duration-300">
             <MapPanel />
           </div>
+
           <div className="flex-1 min-w-[300px] shadow-lg hover:scale-105 transition-transform duration-300">
             <BiddingArena />
           </div>
         </div>
 
-        {/* 🛒 Shop */}
+        {/* 🛒 Shop Section */}
         <div className="w-full shadow-lg hover:scale-105 transition-transform duration-300">
           <Shop />
         </div>

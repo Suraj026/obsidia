@@ -14,7 +14,25 @@ export default function StoryAvatar() {
     }
 
     if (!firstVisit && !hasSpoken) {
-      const speakText = `Welcome to Capture Kingdom! I'm your guide. Let's start by capturing your first kingdom.`;
+      const speakText = `Welcome to OBSIDIA, brave adventurer! 
+Your mission is to explore mystical kingdoms around your real-world location. 
+Here's how it works:
+
+First, locate nearby kingdoms using the Realmwatch Ledger. 
+Some kingdoms may be ghosted, so choose wisely.
+
+When you select a kingdom, you must solve an ancient maze. 
+Only the worthy can complete it.
+
+After the maze, journey to the kingdom's real-world location.
+If you're close enough, a brain teaser will appear.
+
+Answer it correctly to capture the kingdom and earn souls.
+
+Use your souls to bid in the Arena or trade in the Arcane Bazaar.
+The higher your level, the more powerful your rule becomes.
+
+Now go forth, conquer, and become the legend of OBSIDIA!`;
       const utterance = new SpeechSynthesisUtterance(speakText);
       speechSynthesis.speak(utterance);
 
