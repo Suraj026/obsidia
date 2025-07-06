@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, Circle } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import "leaflet/dist/leaflet.css?inline";
 import L from "leaflet";
 import { useNavigate } from "react-router-dom";
 import "../utils/fixLeafletIcons"; // Fix default marker icons

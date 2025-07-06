@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Moon, Sun } from "lucide-react";
-import avatar from "../assets/avatar.jpg";
+import avatar from "../assets/avatar.png";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "../firebase/config";
 
@@ -78,10 +78,10 @@ export default function ProfileHeader() {
           🔥 Ascension Rank: <strong>{profileData.exp}</strong>
         </div>
         <div>
-          💎 Echoflame Shards: <strong>{profileData.souls}</strong>
+          💎 Souls: <strong>{profileData.souls}</strong>
         </div>
         <div>
-          🧱 Voidglass: <strong>{profileData.obsidian}</strong>
+          🧱 Obsidian: <strong>{profileData.obsidian}</strong>
         </div>
         <div>
           🔥 Streak: <strong>{profileData.streak} days</strong>

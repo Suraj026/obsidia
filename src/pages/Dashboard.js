@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProfileHeader from "../components/ProfileHeader";
 import NewsChatPanel from "../components/NewsChatPanel";
 import Leaderboard from "../components/Leaderboard";
@@ -9,44 +9,71 @@ import BiddingArena from "../components/BiddingArena";
 import Shop from "../components/Shop";
 import ProfilePanel from "../components/Dashboard/ProfilePanel";
 import StoryAvatar from "../components/StoryAvatar";
+import StarryBackground from "../components/StarryBackground";
 
 export default function Dashboard() {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    setIsDark(theme === "dark");
+  }, []);
+
   return (
-    <div className="relative bg-white dark:bg-black text-black dark:text-white min-h-screen overflow-y-auto transition-colors duration-300">
-      {/* 🌍 3D Earth Background */}
+    <div className="relative min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300 overflow-hidden">
+      {/* 🌌 Starry Background for Dark Mode */}
+      {isDark && <StarryBackground />}
+
+      {/* 🌍 Earth Visual Background */}
       <EarthBackground />
 
-      <div className="flex flex-col space-y-6 px-4 pt-6">
-        {/* 🔝 Top Row: Profile, Leaderboard, User Info */}
-        <div className="flex justify-between items-start gap-4 flex-wrap">
-          <ProfileHeader />
-          <Leaderboard />
-          <ProfilePanel />
+      {/* 🧙‍♂️ Story Avatar Guide */}
+      <StoryAvatar />
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-4 py-6 space-y-10">
+        {/* 🔝 Header Row */}
+        <div className="flex flex-wrap items-start gap-4 w-full">
+          {/* Profile Header */}
+          <div className="w-full md:w-auto flex-none shadow-lg hover:scale-105 transition-transform duration-300">
+            <ProfileHeader />
+          </div>
+
+          {/* Leaderboard */}
+          <div className="flex-grow shadow-lg hover:scale-105 transition-transform duration-300">
+            <div className="w-full h-[200px]">
+              <Leaderboard />
+            </div>
+          </div>
+
+          {/* Profile Info */}
+          <div className="w-full md:w-auto flex-none shadow-lg hover:scale-105 transition-transform duration-300">
+            <ProfilePanel />
+          </div>
         </div>
 
-        {/* 🗣️ Row 2: News */}
-        <div className="flex justify-start gap-6 pt-4">
+        {/* 🗞️ News Section */}
+        <div className="w-full shadow-lg hover:scale-105 transition-transform duration-300">
           <NewsChatPanel />
         </div>
 
-        {/* Spacer */}
-        <div className="h-12" />
-
-        {/* 🏰 Row 3: Realmwatch, Map, Arena - spaced lower */}
-        <div className="flex justify-between gap-6 pt-12 flex-wrap">
-          <NearbyKingdoms />
-          <MapPanel />
-          <BiddingArena />
+        {/* 🏰 Kingdoms, Map, Bidding Arena */}
+        <div className="flex flex-wrap justify-between gap-6">
+          <div className="flex-1 min-w-[300px] shadow-lg hover:scale-105 transition-transform duration-300">
+            <NearbyKingdoms />
+          </div>
+          <div className="flex-1 min-w-[300px] shadow-lg hover:scale-105 transition-transform duration-300">
+            <MapPanel />
+          </div>
+          <div className="flex-1 min-w-[300px] shadow-lg hover:scale-105 transition-transform duration-300">
+            <BiddingArena />
+          </div>
         </div>
 
-        {/* 🛒 Scrollable Shop Section */}
-        <div className="mt-16 w-full overflow-x-auto pb-10">
+        {/* 🛒 Shop */}
+        <div className="w-full shadow-lg hover:scale-105 transition-transform duration-300">
           <Shop />
         </div>
       </div>
-
-      {/* 🧙‍♂️ Story Mode Avatar */}
-      <StoryAvatar />
     </div>
   );
 }

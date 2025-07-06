@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Utility to generate random coordinates within ~500m radius
+// Local image paths from public folder
+const imagePaths = [
+  "/images/kingdoms/kingdom1.jpeg",
+  "/images/kingdoms/kingdom2.jpeg",
+  "/images/kingdoms/kingdom3.jpeg",
+  "/images/kingdoms/kingdom4.jpeg",
+  "/images/kingdoms/kingdom5.jpeg",
+];
+
+// Generate nearby coordinates (~500m radius)
 const generateNearbyCoords = (lat, lng, count = 5) => {
   const points = [];
   const radiusInMeters = 500;
 
   for (let i = 0; i < count; i++) {
-    const r = radiusInMeters / 111300; // 1 degree ≈ 111.3 km
+    const r = radiusInMeters / 111300;
     const u = Math.random();
     const v = Math.random();
     const w = r * Math.sqrt(u);
@@ -17,7 +26,14 @@ const generateNearbyCoords = (lat, lng, count = 5) => {
 
     const newLat = lat + dx;
     const newLng = lng + dy;
-    points.push({ id: i + 1, lat: newLat, lng: newLng });
+
+    points.push({
+      id: i + 1,
+      lat: newLat,
+      lng: newLng,
+      level: Math.floor(Math.random() * 4) + 1,
+      image: imagePaths[i % imagePaths.length], // rotate through local images
+    });
   }
 
   return points;
@@ -26,18 +42,16 @@ const generateNearbyCoords = (lat, lng, count = 5) => {
 export default function NearbyKingdoms() {
   const [kingdoms, setKingdoms] = useState([]);
   const [ghostIds, setGhostIds] = useState([]);
-  const [userLevel] = useState(3); // Placeholder for current user level
   const navigate = useNavigate();
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude } = pos.coords;
-        const newKingdoms = generateNearbyCoords(latitude, longitude);
-        setKingdoms(newKingdoms);
+        const generated = generateNearbyCoords(latitude, longitude);
+        setKingdoms(generated);
 
-        // Randomly pick 2 ghost kingdom IDs
-        const shuffled = newKingdoms
+        const shuffled = [...generated]
           .map((k) => k.id)
           .sort(() => 0.5 - Math.random());
         setGhostIds(shuffled.slice(0, 2));
@@ -52,27 +66,42 @@ export default function NearbyKingdoms() {
     if (ghostIds.includes(kingdom.id)) {
       alert("👻 Boo! You have been GHOSTED!");
     } else {
-      navigate("/maze"); // 🚀 Redirect to maze
+      navigate("/maze");
     }
   };
 
   return (
-    <div className="bg-white dark:bg-gray-900 text-black dark:text-white p-4 rounded-xl max-h-[400px] overflow-y-auto shadow-lg transition-colors duration-300">
+    <div className="bg-white dark:bg-gray-900 text-black dark:text-white p-4 rounded-xl max-h-[500px] overflow-y-auto shadow-lg transition-colors duration-300">
       <h2 className="text-lg font-bold mb-4">🏯 Realmwatch Ledger</h2>
-      <ul className="space-y-2">
+      <ul className="space-y-4">
         {kingdoms.map((kingdom) => (
           <li
             key={kingdom.id}
-            className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-black dark:text-white p-3 rounded-lg cursor-pointer flex justify-between items-center transition"
             onClick={() => handleSelect(kingdom)}
+            className="cursor-pointer rounded-lg shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-indigo-500 dark:border-indigo-700"
           >
-            <div>
-              <div className="font-bold text-lg">XXXX</div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">
-                Level {Math.floor(Math.random() * (userLevel + 1))}
+            <div className="relative h-32 w-full">
+              <img
+                src={kingdom.image}
+                alt="kingdom"
+                className="w-full h-full object-cover"
+              />
+              {ghostIds.includes(kingdom.id) && (
+                <div className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center text-white font-bold text-lg"></div>
+              )}
+            </div>
+
+            <div className="p-3 bg-gray-100 dark:bg-gray-800">
+              <div className="font-semibold text-indigo-700 dark:text-indigo-300">
+                {ghostIds.includes(kingdom.id) ? "XXXXXXXXXX" : "XXXXXXXXXX"}
+              </div>
+              <div className="text-sm text-gray-600 dark:text-gray-300">
+                Level: {kingdom.level}
+              </div>
+              <div className="mt-1 text-sm text-right text-blue-600 dark:text-blue-300">
+                🗺️ {ghostIds.includes(kingdom.id) ? "Explore" : "Explore"}
               </div>
             </div>
-            <div className="text-sm">🗺️ Explore</div>
           </li>
         ))}
       </ul>

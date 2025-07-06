@@ -1,54 +1,87 @@
-import React from "react";
+import React, { useState } from "react";
+
+const shopItems = [
+  {
+    title: "🧙 Veil of Shadows",
+    description: "Hide your kingdom",
+  },
+  {
+    title: "📈 Crown of Surge",
+    description: "Boost kingdom level",
+  },
+  {
+    title: "🌀 Soul Leech Sigil",
+    description: "Drain souls from invaders",
+  },
+  {
+    title: "⏳ Hourglass of Confusion",
+    description: "Reduce teaser time",
+  },
+  {
+    title: "➕ Wyrm's Whisper",
+    description: "Add teaser options",
+  },
+  {
+    title: "🧠 Oracle's Hint",
+    description: "Reveal teaser clues",
+  },
+  {
+    title: "⚔️ Blade of Truth",
+    description: "Auto-solve teaser once",
+  },
+  {
+    title: "🛡️ Mystic Ward",
+    description: "Block ghost traps",
+  },
+];
 
 export default function Shop() {
-  const soulCount = 500;
-  const obsidianCount = Math.floor(soulCount / 100);
+  const [soulCount] = useState(500); // You can wire this to Firebase later
+  const [obsidianCount, setObsidianCount] = useState(50);
 
-  const items = [
-    { name: "🕵️ Veil of Shadows", desc: "Hide your kingdom", cost: 10 },
-    { name: "📈 Crown of Surge", desc: "Boost kingdom level", cost: 10 },
-    {
-      name: "🪤 Soul Leech Sigil",
-      desc: "Drain souls from invaders",
-      cost: 10,
-    },
-    { name: "⌛ Hourglass of Confusion", desc: "Reduce teaser time", cost: 10 },
-    { name: "➕ Wyrm's Whisper", desc: "Add teaser options", cost: 10 },
-    { name: "❌ Seal of Stillness", desc: "Disable refresh", cost: 10 },
-    {
-      name: "💥 Phantom Pathstone",
-      desc: "Misdirect to ghost kingdoms",
-      cost: 10,
-    },
-    { name: "🔥 Phoenix Emblem", desc: "Recover lost kingdom", cost: 10 },
-  ];
+  const handleBuy = (itemName) => {
+    if (obsidianCount >= 10) {
+      setObsidianCount((prev) => prev - 10);
+      alert(`✅ Purchased ${itemName}`);
+    } else {
+      alert("❌ Insufficient Obsidian!");
+    }
+  };
 
   return (
-    <div className="bg-white dark:bg-gray-800 text-black dark:text-white p-4 rounded-xl flex justify-between overflow-x-auto space-x-4 shadow-inner transition-colors duration-300">
-      <div>
-        <h3 className="text-lg font-bold mb-2">🛒 Arcane Bazaar</h3>
-        <p>
-          💎 Souls: <strong>{soulCount}</strong> | 🧱 Obsidian:{" "}
-          <strong>{obsidianCount}</strong>
-        </p>
+    <div className="flex flex-wrap gap-6 bg-[#0e0e1a] dark:bg-[#0e0e1a] text-white p-6 rounded-xl shadow-2xl">
+      {/* Sidebar */}
+      <div className="min-w-[180px] flex flex-col gap-2 p-2">
+        <h3 className="text-2xl font-bold mb-2 text-white">🛒 Arcane Bazaar</h3>
+        <div className="text-md text-blue-300">
+          💎 Souls: <span className="font-bold text-white">{soulCount}</span>
+        </div>
+        <div className="text-md text-orange-300">
+          🧱 Obsidian:{" "}
+          <span className="font-bold text-white">{obsidianCount}</span>
+        </div>
       </div>
 
-      {items.map((item, idx) => (
-        <div
-          key={idx}
-          className="bg-gray-100 dark:bg-gray-900 border dark:border-purple-600 border-purple-300 rounded-lg p-3 w-56 flex-shrink-0 transition-colors duration-300"
-        >
-          <h4 className="font-bold text-purple-700 dark:text-purple-300">
-            {item.name}
-          </h4>
-          <p className="text-xs text-gray-700 dark:text-gray-300">
-            {item.desc}
-          </p>
-          <button className="mt-2 bg-purple-600 hover:bg-purple-700 dark:bg-purple-700 dark:hover:bg-purple-800 text-white px-3 py-1 rounded text-sm">
-            Buy for {item.cost} 🧱
-          </button>
-        </div>
-      ))}
+      {/* Shop Items Grid */}
+      <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {shopItems.map((item, index) => (
+          <div
+            key={index}
+            className="bg-[#141826] dark:bg-[#141826] border border-purple-700 hover:shadow-purple-700 hover:scale-105 transition-all duration-300 rounded-xl p-4 shadow-md"
+          >
+            <h4 className="text-lg font-bold text-purple-300 mb-1">
+              {item.title}
+            </h4>
+            <p className="text-sm text-gray-300">{item.description}</p>
+            <button
+              onClick={() => handleBuy(item.title)}
+              className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-1 mt-4 rounded shadow-lg transition"
+            >
+              Buy for 10 🧱
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
